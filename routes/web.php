@@ -1,9 +1,5 @@
 <?php
 
-phpinfo();
-
-exit;
-
 use Illuminate\Support\Facades\Route;
 
 use function Pest\Laravel\get;

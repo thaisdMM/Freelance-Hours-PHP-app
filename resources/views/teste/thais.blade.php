@@ -9,7 +9,13 @@
 </head>
 <body>
    
-   oi Thaís
+  <?php echo 'oi Thaís'; ?>
+
+  <?php foreach(range(1,20)as $key):?>
+
+   <li><?php echo $key; ?></li>
+
+   <?php endforeach; ?>
 
 </body>
 </html>

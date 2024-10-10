@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends Controller
 {
@@ -25,9 +26,7 @@ class WelcomeController extends Controller
      
       ]); */
 
-      $user->update(['email_verified_at'=> now()->subMonths(10)]);
-
-      dd($user->email_verified_at->diffForHumans());
+      Auth::login($user);
 
       return view('teste.thais');
       

@@ -17,8 +17,12 @@
 
    <?php endforeach; ?>
 
+   @auth
 
-   
+      <span> voce está autenticado</span>
+
+   @endauth
+
    @foreach(range(1,20) as $key)
 
       <li>{{ $key}}</li>

@@ -17,5 +17,13 @@
 
    <?php endforeach; ?>
 
+
+   
+   @foreach(range(1,20) as $key)
+
+      <li>{{ $key}}</li>
+
+   @endforeach
+
 </body>
 </html>

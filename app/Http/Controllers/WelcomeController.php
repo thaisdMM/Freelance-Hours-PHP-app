@@ -11,18 +11,43 @@ class WelcomeController extends Controller
     
     {
 
-      $user = User::query()->create([
+      $user = User::find(1);
+
+      /*
+      User::query()->create([
 
          'name' => 'Thais',
 
          'email' => 'thais@email.com',
 
          'password' => 'jeremias',
-      ]);
+     
+     
+      ]); */
 
-      dd($user);
+      /* ou assim
+
+      $user->email_verified_at = now();
+
+      $user->save();
+
+      dd($user->email_verified_at);
+
+      */
+
+      //OU
+
+
+      $user->email_verified_at = now();
+
+      $user->save();
+
+      $user->update(['email_verified_at' => now()]);
+
+      dd($user->email_verified_at);
 
       return view('teste.thais');
-        
+      
+
     }
 }

@@ -25,26 +25,9 @@ class WelcomeController extends Controller
      
       ]); */
 
-      /* ou assim
+      $user->update(['email_verified_at'=> now()->subMonths(10)]);
 
-      $user->email_verified_at = now();
-
-      $user->save();
-
-      dd($user->email_verified_at);
-
-      */
-
-      //OU
-
-
-      $user->email_verified_at = now();
-
-      $user->save();
-
-      $user->update(['email_verified_at' => now()]);
-
-      dd($user->email_verified_at);
+      dd($user->email_verified_at->diffForHumans());
 
       return view('teste.thais');
       

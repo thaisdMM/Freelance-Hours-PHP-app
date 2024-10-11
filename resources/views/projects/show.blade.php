@@ -1,3 +1,8 @@
 <div>
-    <!-- Breathing in, I calm body and mind. Breathing out, I smile. - Thich Nhat Hanh -->
+
+   <pre>
+
+      @dd(request()->route('project'))
+
+   </pre>
 </div>

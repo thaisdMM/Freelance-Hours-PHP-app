@@ -2,7 +2,6 @@
 
    <pre>
 
-      @dd(request()->route('project'))
-
+      show
    </pre>
 </div>

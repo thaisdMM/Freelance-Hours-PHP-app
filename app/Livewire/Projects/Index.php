@@ -12,12 +12,11 @@ class Index extends Component
     {
         return view('livewire.projects.index');
     }
-
+    
     #[Computed()]
-
-public function projects()
-{
-   return Project::query()->inRandomOrder()->get();
+    public function projects()
+    {
+        return Project::query()->inRandomOrder()->get();
+    }
 }
 
-}

@@ -1,7 +1,5 @@
-<div>
+<x-layouts.app>
 
-   <pre>
+   <livewire:projects.show />
 
-      show
-   </pre>
-</div>
+</x-layouts.app>

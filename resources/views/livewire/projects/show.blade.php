@@ -1,8 +1,4 @@
-<div>
 
-<x-project.card :project="$project" />
-
-</div>
-
+<x-project.card :$project />
 
       

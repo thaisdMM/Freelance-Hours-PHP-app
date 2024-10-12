@@ -1,5 +1,5 @@
 <div>
    
-   componente livewire project proposals
+<x-proposals :proposals="$project->proposals" />
 
 </div>

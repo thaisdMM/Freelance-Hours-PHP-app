@@ -9,6 +9,13 @@ class Show extends Component
 {
 
     public Project $project;
+    
+    // Garantir que o projeto seja passado corretamente via montagem
+    public function mount(Project $project)
+    {
+        $this->project = $project;
+    }
+
 
     public function render()
 {

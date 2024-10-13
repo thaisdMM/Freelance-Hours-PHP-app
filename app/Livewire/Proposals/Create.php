@@ -11,7 +11,7 @@ class Create extends Component
 
    public Project $project;
 
-    public bool $modal = true;
+    public bool $modal = false;
 
     #[Rule(['required', 'email'])]
     public string $email='';
@@ -25,22 +25,20 @@ class Create extends Component
     public function save()
     {
 
-      dd($this->agree, !$this->agree);
-        //$this->validate();
+        $this->validate();
         if (! $this->agree) {
             $this->addError('agree', 'Você precisa concordar com os termos de uso');
             return;
         }
 {
-    // Valida os campos de acordo com as regras definidas acima
-    $this->validate();
-
     // Após a validação passar, salva a proposta no banco
     $this->project->proposals()
         ->updateOrCreate(
             ['email' => $this->email],
             ['hours' => $this->hours]
         );
+
+        $this->modal = false;
 }
 } 
     

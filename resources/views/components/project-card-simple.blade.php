@@ -34,11 +34,11 @@
     <div class="py-4 space-y-4">
         <div class="uppercase font-bold text-[#8C8C9A] text-[12px]">Tecnologias</div>
         <div class="flex gap-[8px] items-center pb-2">
-            @foreach($project->tech_stack as $tech)
-               {{ $tech}}
-
+         @foreach($project->tech_stack as $tech)
                
-            @endforeach
+               <x-ui.tech :icon="$tech" :text="$tech" />
+                  
+         @endforeach
         </div>
     </div>
 

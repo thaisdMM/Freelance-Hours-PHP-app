@@ -19,8 +19,18 @@ class Create extends Component
     #[Rule(['required', 'numeric', 'gt:0'])]
 
     public int $hours=0;
-    
+
+    public bool $agree = false;
+
     public function save()
+    {
+
+      dd($this->agree, !$this->agree);
+        //$this->validate();
+        if (! $this->agree) {
+            $this->addError('agree', 'Você precisa concordar com os termos de uso');
+            return;
+        }
 {
     // Valida os campos de acordo com as regras definidas acima
     $this->validate();
@@ -32,7 +42,7 @@ class Create extends Component
             ['hours' => $this->hours]
         );
 }
-    
+} 
     
     public function render()
     {

@@ -1,5 +1,5 @@
 
 
-<x-project-card :$project />
+<x-projects.card :$project />
 
       

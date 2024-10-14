@@ -14,6 +14,7 @@ class Proposal extends Model
    
       'email',
       'hours',
+      'position_status',
         ];
 
 }

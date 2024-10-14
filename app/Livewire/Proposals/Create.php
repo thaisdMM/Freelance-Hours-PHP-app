@@ -38,14 +38,14 @@ class Create extends Component
             
             return;
         }
-
-        $proposal = $this->project->proposals()
-
-        ->updateOrCreate(
-            ['email' => $this->email],
-            ['hours' => $this->hours]
-        );
-    $this->arrangePositions($proposal);
+        DB::transaction(function () {
+         $proposal = $this->project->proposals()
+             ->updateOrCreate(
+                 ['email' => $this->email],
+                 ['hours' => $this->hours]
+             );
+         $this->arrangePositions($proposal);
+     });
 
 
         $this->dispatch('proposal::created');
@@ -54,22 +54,31 @@ class Create extends Component
    }
       public function arrangePositions(Proposal $proposal)
 {
-        /*$query = DB::select('
+        $query = DB::select('
             select *, row_number() over (order by hours asc) as newPosition
             from proposals
             where project_id = :project
             ', ['project' => $proposal->project_id]);
+
         $position = collect($query)->where('id', '=', $proposal->id)->first();
+
         $otherProposal = collect($query)->where('position', '=', $position->newPosition)->first();
+
         if ($otherProposal) {
             $proposal->update(['position_status' => 'up']);
-            $oProposal = Proposal::find($otherProposal->id);
+            Proposal::query()->where('id', '=', $otherProposal->id)->update(['position_status' => 'down']);
+           
+            
+            
+            /*$oProposal = Proposal::find($otherProposal->id);
             
             $oProposal->update(['position_status' => 'down']);
             $oProposal->notify(new PerdeuMane($this->project));*/
-        
-       // arrangePositions::run($proposal->project_id);
+        } 
+      
+        arrangePositions::run($proposal->project_id);
       }
+      
 
     
     public function render()
@@ -79,3 +88,4 @@ class Create extends Component
     }
    
 }
+

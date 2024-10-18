@@ -2,20 +2,19 @@
 
 namespace App\Notifications;
 
-use App\Models\Project;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewProposal extends Notification
+class PerdeuMane extends Notification
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct(public Project $project)
+    public function __construct()
     {
         //
     }
@@ -36,9 +35,9 @@ class NewProposal extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('Você recebeu uma nova proposta')
-                    ->action('Veja o seu projeto', route('projects.show', $this->project->id))
-                    ->line('Obrigado!');
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**

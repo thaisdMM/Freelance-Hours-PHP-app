@@ -2,19 +2,20 @@
 
 namespace App\Notifications;
 
+use App\Models\Project;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class PerdeuMane extends Notification
+class PerdeuMane extends Notification implements ShouldQueue
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct(public Project $project)
     {
         //
     }
@@ -35,9 +36,9 @@ class PerdeuMane extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Você perdeu a posição do projeto: '.$this->project->title)
+                    ->action('Abra o projeto', route('projects.show', $this->project))
+                    ->line('Obrigado!');
     }
 
     /**

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: freelance-hours
+    env: php
+    region: oregon
+    buildCommand: "composer install && php artisan key:generate && php artisan migrate --force"
+    startCommand: "php artisan serve --host 0.0.0.0 --port 10000"
+    envVars:
+      - key: APP_KEY
+        sync: false
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_DATABASE
+        value: /var/data/sqlite.db
+    autoDeploy: true

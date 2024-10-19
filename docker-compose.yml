@@ -1,11 +1,11 @@
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"  # Mapeie a porta 8000 do host para o container
-    environment:
-      PORT: 8000  # Defina a variável PORT
-    volumes:
-     - /var/data:/data
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "8000:8000" # Mapeie a porta 8000 do host para o container
+        environment:
+            PORT: 8000 # Defina a variável PORT
+        volumes:
+            - ./database:/var/data/database

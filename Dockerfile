@@ -32,7 +32,7 @@ EXPOSE 8000
 
 # Rodar migrations e seeders (opcional)
 RUN php artisan migrate --force
-RUN php artisan db:seed --force
+#RUN php artisan db:seed --force
 
 # Comando para iniciar o servidor PHP
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]

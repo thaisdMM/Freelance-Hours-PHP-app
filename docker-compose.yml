@@ -1,11 +1,14 @@
 services:
-    app:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        ports:
-            - "8000:8000" # Mapeie a porta 8000 do host para o container
-        environment:
-            PORT: 8000 # Defina a variável PORT
-        volumes:
-            - ./database:/var/data/database
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"  # Expor a porta 8000
+    environment:
+      PORT: 8000
+    volumes:
+      - .:/var/www
+     # - ./database:/var/data/database
+
+    command: bash -c "npm run dev & php artisan serve --host 0.0.0.0 --port=8000"

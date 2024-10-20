@@ -27,8 +27,8 @@ RUN npm install
 # Gerar os arquivos de build do Vite e Tailwind CSS
 RUN npm run build
 
-# Expor a porta 8000
-EXPOSE 8000
+# Expor a porta 10000
+EXPOSE 10000
 
 # Rodar migrations e seeders (opcional)
 RUN php artisan migrate --force
